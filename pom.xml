@@ -18,6 +18,7 @@
         <java.version>1.8</java.version>
         <env.encoding>UTF-8</env.encoding>
         <clickhouse-jdbc.version>0.1.54</clickhouse-jdbc.version>
+        <clickhouse-native-jdbc.version>1.7-stable</clickhouse-native-jdbc.version>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <!-- junit5 -->
         <junit.jupiter.version>5.3.1</junit.jupiter.version>
@@ -80,10 +81,15 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <!-- clickhouse -->
+<!--        <dependency>-->
+<!--            <groupId>ru.yandex.clickhouse</groupId>-->
+<!--            <artifactId>clickhouse-jdbc</artifactId>-->
+<!--            <version>${clickhouse-jdbc.version}</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>ru.yandex.clickhouse</groupId>
-            <artifactId>clickhouse-jdbc</artifactId>
-            <version>${clickhouse-jdbc.version}</version>
+            <groupId>com.github.housepower</groupId>
+            <artifactId>clickhouse-native-jdbc</artifactId>
+            <version>${clickhouse-native-jdbc.version}</version>
         </dependency>
     </dependencies>
 </project>

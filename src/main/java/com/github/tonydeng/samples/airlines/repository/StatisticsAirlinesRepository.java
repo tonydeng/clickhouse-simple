@@ -15,14 +15,28 @@ public class StatisticsAirlinesRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<AirlineFlightsNumber> getFlightsByYear(int year){
+    /**
+     * 获取某一年不同航空公司的飞行次数
+     *
+     * @param year
+     * @return
+     */
+    public List<AirlineFlightsNumber> getFlightsByYear(int year) {
         return jdbcTemplate.query(
-                "select Carrier,sum(AirlineID) as flights from ontime where Year = ? group by Carrier order by flights desc",
-                new Object[]{year},(rs,rowNum) -> {
-                    return new AirlineFlightsNumber(
-                            rs.getString("Carrier"),
-                            rs.getLong("flights"));
-                }
+                "select Carrier,sum(AirlineID) as flights from ontime where Year = " + year + " group by Carrier order by flights desc",
+                new Integer[]{year}, (rs, rowNum) -> new AirlineFlightsNumber(
+                        rs.getString("Carrier"),
+                        rs.getLong("flights"))
+        );
+    }
+
+    public List<AirlineFlightsNumber> getFilghtsByYearAndMonth(int year, int month) {
+        return jdbcTemplate.query(
+                "",
+                new Integer[]{year, month}, (rs, rowNum) -> new AirlineFlightsNumber(
+                        rs.getString("Carrier"),
+                        rs.getLong("flights")
+                )
         );
     }
 }
